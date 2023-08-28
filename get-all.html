@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get All Users</title>
+</head>
+
+<body>
+    <h1>Danh sách thành viên</h1>
+    <div id="userData"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function displayUserData(userData) {
+            const userDataDiv = document.getElementById('userData');
+            userDataDiv.innerHTML = '';
+
+            userData.forEach(user => {
+                const userElement = document.createElement('div');
+                userElement.innerHTML = `
+                <p><strong>Mã sinh viên:</strong> ${user.maSinhVien}</p>
+                <p><strong>Họ tên:</strong> ${user.hoTen}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Giới tính:</strong> ${user.gioiTinh}</p>
+                <p><strong>Sở thích:</strong> ${user.soThich}</p>
+                <p><strong>Quốc tịch:</strong> ${user.quocTich}</p>
+                <p><strong>Ghi chú:</strong> ${user.ghiChu}</p>
+                <hr>
+            `;
+                userDataDiv.appendChild(userElement);
+            });
+        }
+
+        function getAllUserData() {
+            axios.get('http://localhost:8080/api/get')
+                .then(response => {
+                    const userData = response.data;
+                    displayUserData(userData);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        // Gọi hàm lấy dữ liệu khi trang tải xong
+        getAllUserData();
+    </script>
+</body>
+
+</html>
