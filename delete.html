@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delete User</title>
+</head>
+
+<body>
+    <h1>Xóa thành viên</h1>
+    <form id="deleteForm">
+        <label for="userId">Nhập ID cần xóa:</label>
+        <input type="text" id="userId" name="userId" required>
+        <button type="submit">Xóa</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('deleteForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userId = document.getElementById('userId').value;
+
+            axios.delete(`http://localhost:8080/api/delete/${userId}`)
+                .then(response => {
+                    alert('Xóa thành công!');
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Xóa thất bại. Vui lòng kiểm tra lại ID.');
+                });
+        });
+    </script>
+</body>
+
+</html>
