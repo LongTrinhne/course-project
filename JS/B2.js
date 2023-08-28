@@ -49,8 +49,8 @@ function kiemTra() {
         loi = loi + "Bạn chưa chọn quốc tịch<br>";
         document.frm1.quocTich.classList.add("bg-warning");
     }
-    if (bosung.length < 50 || bosung.length > 1000) {
-        loi = loi + "Hãy nhập Thông tin bổ sung ít hơn 200 ký tự";
+    if (bosung.length < 200) {
+        loi += "Hãy nhập trên 200 ký tự";
         document.frm1.bosung.classList.add("bg-warning");
     }
 
