@@ -1,5 +1,5 @@
 // tránh event mặc định nhấp enter thì reload lại trang
-document.querySelector('form[name="frm1"]').addEventListener('submit', function(event) {
+document.querySelector('form[name="frm1"]').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Call the kiemTra() function for form validation
@@ -19,7 +19,7 @@ function kiemTra() {
     var bosung = document.frm1.bosung.value;
     var gioiTinh = document.frm1.gender.value;
     var checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
-    var soThich = Array.from(checkboxes).map(function(checkbox) {
+    var soThich = Array.from(checkboxes).map(function (checkbox) {
         return checkbox.value;
     });
     var loi = "";
@@ -49,7 +49,7 @@ function kiemTra() {
         loi = loi + "Bạn chưa chọn quốc tịch<br>";
         document.frm1.quocTich.classList.add("bg-warning");
     }
-    if (bosung.length < 50 || bosung.length > 1000) {
+    if (bosung.length > 1000) {
         loi = loi + "Hãy nhập Thông tin bổ sung ít hơn 200 ký tự";
         document.frm1.bosung.classList.add("bg-warning");
     }
